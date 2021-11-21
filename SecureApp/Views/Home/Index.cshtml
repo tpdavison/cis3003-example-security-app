@@ -1,0 +1,26 @@
+﻿@model SecureApp.Services.ValuesGetDto
+
+@{
+    ViewData["Title"] = "Value Fetch";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <h4>ValuesGetDto</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+    </dl>
+</div>
