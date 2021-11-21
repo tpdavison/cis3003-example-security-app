@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Auth0.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -25,6 +26,10 @@ namespace SecureApp
         {
             services.AddHttpClient();
             services.AddScoped<IValuesService, ValuesService>();
+            services.AddAuth0WebAppAuthentication(options => {
+                options.Domain = Configuration["Auth:Domain"];
+                options.ClientId = Configuration["Auth:ClientId"];
+            });
             services.AddControllersWithViews();
         }
 
@@ -43,6 +48,8 @@ namespace SecureApp
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

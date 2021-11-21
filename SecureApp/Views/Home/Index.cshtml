@@ -1,7 +1,14 @@
 ﻿@model SecureApp.Services.ValuesGetDto
 
 @{
-    ViewData["Title"] = "Value Fetch";
+    if (User.Identity.IsAuthenticated)
+    {
+        ViewData["Title"] = $"{User.Identity.Name}'s Value Fetch";
+    }
+    else
+    {
+        ViewData["Title"] = "Generic Value Fetch";
+    }
 }
 
 <h1>@ViewData["Title"]</h1>
